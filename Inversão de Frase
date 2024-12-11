@@ -1,0 +1,33 @@
+import java.util.Stack;
+
+public class Inversao_Frases_Pilha {
+    public static void main(String[] args) {
+        String exemplo1 = "UM CIENTISTA DA COMPUTACAO E UM TECNoLOGO EM SISTEMAS PARA INTERNET DEVEM RESOLVER OS PROBLEMAS LOGICAMENTE";
+        String exemplo2 = "ESARF :ATERCES ODALERAHCAB ME AICNEIC AD OAcATUPMOC E O OGOLoNCET ME SAMETSIS ARAP TENRETNI OD FI ONAIOG SUPMAC SOHNIRROM OaS SO SEROHLEM SOSRUC ED OAcATUPMOC OD ODATSE ED .SAIOG";
+
+        System.out.println(inverterPalavras(exemplo1));
+        System.out.println(inverterPalavras(exemplo2));
+    }
+
+    public static String inverterPalavras(String entrada) {
+        Stack<Character> pilha = new Stack<>();
+        StringBuilder resultado = new StringBuilder();
+
+        for (char caractere : entrada.toCharArray()) {
+            if (caractere == ' ') {
+                while (!pilha.isEmpty()) {
+                    resultado.append(pilha.pop());
+                }
+                resultado.append(' ');
+            } else {
+                pilha.push(caractere);
+            }
+        }
+
+        while (!pilha.isEmpty()) {
+            resultado.append(pilha.pop());
+        }
+
+        return resultado.toString();
+    }
+}
